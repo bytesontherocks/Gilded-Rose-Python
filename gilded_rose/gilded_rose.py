@@ -24,21 +24,23 @@ class GildedRose(object):
             self._update_sell_in(item)
 
             if item.name == "Aged Brie":
-                self._increase_quality(item)    
+                self._increase_quality(item)  
+                if item.sell_in < 0:
+                    self._increase_quality(item)
+
             elif item.name == "Backstage passes to a TAFKAL80ETC concert":
                 self._increase_quality(item)               
                 if item.sell_in < 10:
                     self._increase_quality(item)
                 if item.sell_in < 5:
                     self._increase_quality(item) 
+                if item.sell_in < 0:
+                    item.quality = GildedRose.MIN_QUALITY
             else:
                 self._decrease_quality(item)
-        
-            if item.sell_in < 0:
-                if item.name == "Aged Brie":
-                    self._increase_quality(item)
-                elif item.name == "Backstage passes to a TAFKAL80ETC concert":
-                    item.quality = GildedRose.MIN_QUALITY
-                else:
+                if item.sell_in < 0:
                     self._decrease_quality(item)
+        
+        
+               
                        

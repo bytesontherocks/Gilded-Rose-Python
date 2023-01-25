@@ -36,10 +36,10 @@ class GildedRose(object):
             if item.sell_in < 0:
                 if item.name == "Aged Brie":
                     self._increase_quality(item)
+                elif item.name == "Backstage passes to a TAFKAL80ETC concert":
+                    item.quality = GildedRose.MIN_QUALITY                        
+                elif item.name == "Sulfuras, Hand of Ragnaros":
+                    pass
                 else:
-                    if item.name == "Backstage passes to a TAFKAL80ETC concert":
-                        item.quality = GildedRose.MIN_QUALITY                        
-                    else:
-                        if item.name != "Sulfuras, Hand of Ragnaros":
-                            self._decrease_quality(item)
+                    self._decrease_quality(item)
                        

@@ -1,4 +1,6 @@
 class GildedRose(object):
+    MAX_QUALITY = 50
+    MIN_QUALITY = 0
 
     def __init__(self, items):
         self.items = items
@@ -12,29 +14,29 @@ class GildedRose(object):
             self._update_sell_in(item)
 
             if item.name == "Aged Brie" or item.name == "Backstage passes to a TAFKAL80ETC concert":
-                if item.quality < 50:
+                if item.quality < GildedRose.MAX_QUALITY:
                     item.quality = item.quality + 1
                     if item.name == "Backstage passes to a TAFKAL80ETC concert":
                         if item.sell_in < 10:
-                            if item.quality < 50:
+                            if item.quality < GildedRose.MAX_QUALITY:
                                 item.quality = item.quality + 1
                         if item.sell_in < 5:
-                            if item.quality < 50:
+                            if item.quality < GildedRose.MAX_QUALITY:
                                 item.quality = item.quality + 1
             else:
-                if item.quality > 0:
+                if item.quality > GildedRose.MIN_QUALITY:
                     if item.name != "Sulfuras, Hand of Ragnaros":
                         item.quality = item.quality - 1
         
-            if item.sell_in < 0:
+            if item.sell_in < GildedRose.MIN_QUALITY:
                 if item.name == "Aged Brie":
-                    if item.quality < 50:
+                    if item.quality < GildedRose.MAX_QUALITY:
                         item.quality = item.quality + 1
                 else:
                     if item.name == "Backstage passes to a TAFKAL80ETC concert":
-                        item.quality = 0                        
+                        item.quality = GildedRose.MIN_QUALITY                        
                     else:
-                        if item.quality > 0:
+                        if item.quality > GildedRose.MIN_QUALITY:
                             if item.name != "Sulfuras, Hand of Ragnaros":
                                 item.quality = item.quality - 1
                        

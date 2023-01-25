@@ -29,9 +29,10 @@ class GildedRose(object):
                     self._increase_quality(item)
                 if item.sell_in < 5:
                     self._increase_quality(item)                            
+            elif item.name == "Sulfuras, Hand of Ragnaros":
+                pass
             else:
-                if item.name != "Sulfuras, Hand of Ragnaros":
-                    self._decrease_quality(item)
+                self._decrease_quality(item)
         
             if item.sell_in < 0:
                 if item.name == "Aged Brie":
